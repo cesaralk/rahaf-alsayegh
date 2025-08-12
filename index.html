@@ -1,4 +1,4 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@ i<!DOCTYPE html>
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             overflow-x: hidden;
         }
 
@@ -32,7 +32,7 @@ i<!DOCTYPE html>
             display: flex;
             align-items: center;
             position: relative;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             color: white;
             text-align: center;
         }
@@ -177,12 +177,71 @@ i<!DOCTYPE html>
             left: 0;
             width: 0;
             height: 2px;
-            background: #667eea;
+            background: #3498db;
             transition: width 0.3s ease;
         }
 
         .nav a:hover::after {
             width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255,255,255,0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                gap: 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav ul.mobile-open {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav li {
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(52, 152, 219, 0.1);
+            }
+
+            .nav li:last-child {
+                border-bottom: none;
+            }
         }
 
         /* Sections */
@@ -212,7 +271,7 @@ i<!DOCTYPE html>
             transform: translateX(-50%);
             width: 60px;
             height: 4px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #3498db, #2c3e50);
             border-radius: 2px;
         }
 
@@ -223,7 +282,7 @@ i<!DOCTYPE html>
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
-            border-left: 5px solid #667eea;
+            border-left: 5px solid #3498db;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -248,9 +307,9 @@ i<!DOCTYPE html>
         }
 
         .edu-date {
-            color: #667eea;
+            color: #3498db;
             font-weight: 600;
-            background: rgba(102, 126, 234, 0.1);
+            background: rgba(52, 152, 219, 0.1);
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
         }
@@ -261,7 +320,7 @@ i<!DOCTYPE html>
 
         .gpa {
             display: inline-block;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #3498db, #2c3e50);
             color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
@@ -283,7 +342,7 @@ i<!DOCTYPE html>
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, #667eea, #764ba2);
+            background: linear-gradient(to bottom, #3498db, #2c3e50);
         }
 
         .timeline-item {
@@ -309,10 +368,10 @@ i<!DOCTYPE html>
             top: 2rem;
             width: 12px;
             height: 12px;
-            background: #667eea;
+            background: #3498db;
             border-radius: 50%;
             border: 3px solid white;
-            box-shadow: 0 0 0 3px #667eea;
+            box-shadow: 0 0 0 3px #3498db;
         }
 
         .job-header {
@@ -327,7 +386,7 @@ i<!DOCTYPE html>
         }
 
         .company {
-            color: #667eea;
+            color: #3498db;
             font-weight: 600;
             font-size: 1.1rem;
         }
@@ -354,7 +413,7 @@ i<!DOCTYPE html>
             content: '▶';
             position: absolute;
             left: 0;
-            color: #667eea;
+            color: #3498db;
             font-size: 0.8rem;
         }
 
@@ -381,7 +440,7 @@ i<!DOCTYPE html>
 
         .skill-icon {
             font-size: 3rem;
-            color: #667eea;
+            color: #3498db;
             margin-bottom: 1rem;
         }
 
@@ -411,7 +470,7 @@ i<!DOCTYPE html>
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #3498db;
         }
 
         .cert-item:hover {
@@ -426,7 +485,7 @@ i<!DOCTYPE html>
         }
 
         .cert-provider {
-            color: #667eea;
+            color: #3498db;
             font-size: 0.9rem;
         }
 
@@ -489,7 +548,7 @@ i<!DOCTYPE html>
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #3498db, #2c3e50);
             border-radius: 4px;
         }
     </style>
@@ -498,7 +557,10 @@ i<!DOCTYPE html>
     <!-- Navigation -->
     <nav class="nav" id="navbar">
         <div class="container">
-            <ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul id="navMenu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -529,7 +591,7 @@ i<!DOCTYPE html>
                         <i class="fas fa-map-marker-alt"></i>
                         <span>Beirut, Lebanon</span>
                     </a>
-                    <a href="#" class="contact-item">
+                    <a href="https://www.linkedin.com/in/rahaf-al-sayegh" class="contact-item" target="_blank">
                         <i class="fab fa-linkedin"></i>
                         <span>LinkedIn</span>
                     </a>
@@ -732,7 +794,7 @@ i<!DOCTYPE html>
         <div class="container">
             <h2 class="section-title fade-in">Certifications & Activities</h2>
             
-            <h3 style="margin-bottom: 1rem; color: #667eea; font-size: 1.5rem;">Recent Certifications</h3>
+            <h3 style="margin-bottom: 1rem; color: #3498db; font-size: 1.5rem;">Recent Certifications</h3>
             <div class="cert-grid">
                 <div class="cert-item fade-in">
                     <div class="cert-title">Certificate of Participation – 42 Piscine</div>
@@ -768,7 +830,7 @@ i<!DOCTYPE html>
                 </div>
             </div>
 
-            <h3 style="margin: 3rem 0 1rem; color: #667eea; font-size: 1.5rem;">Professional Activities</h3>
+            <h3 style="margin: 3rem 0 1rem; color: #3498db; font-size: 1.5rem;">Professional Activities</h3>
             <div class="cert-grid">
                 <div class="cert-item fade-in">
                     <div class="cert-title">Brain and Training Hubs Member</div>
@@ -791,6 +853,28 @@ i<!DOCTYPE html>
     </section>
 
     <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('mobile-open');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navMenu.classList.contains('mobile-open')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('mobile-open');
+                mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
