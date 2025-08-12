@@ -1,0 +1,849 @@
+i<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahaf Al Sayegh - Data Analytics Professional</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="a" cx="50" cy="50" r="50"><stop offset="0%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><circle cx="20" cy="20" r="2" fill="url(%23a)"/><circle cx="80" cy="40" r="3" fill="url(%23a)"/><circle cx="40" cy="80" r="1" fill="url(%23a)"/></svg>') repeat;
+            opacity: 0.3;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            transform: translateY(-100%);
+        }
+
+        .nav.visible {
+            transform: translateY(0);
+        }
+
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* Education Section */
+        .education-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .edu-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .edu-date {
+            color: #667eea;
+            font-weight: 600;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+        }
+
+        .edu-details {
+            margin-top: 1rem;
+        }
+
+        .gpa {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-left: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .job-header {
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .job-date {
+            color: #666;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        .achievements {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .achievements li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .achievements li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .skill-list {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .cert-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-provider {
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .timeline {
+                padding-left: 1rem;
+            }
+            
+            .timeline-item {
+                margin-left: 1rem;
+            }
+            
+            .timeline-item::before {
+                left: -2rem;
+            }
+            
+            .edu-header {
+                flex-direction: column;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Rahaf Al Sayegh</h1>
+                <p class="subtitle">Data Analytics & Business Management Professional</p>
+                <p class="description">Master's student in Data Analytics with proven expertise in data visualization, business analysis, and team leadership. Passionate about transforming data into actionable insights.</p>
+                
+                <div class="contact-info">
+                    <a href="mailto:Rahafalsayegh6@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Rahafalsayegh6@gmail.com</span>
+                    </a>
+                    <a href="tel:+96181785198" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+961 81 785 198</span>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Beirut, Lebanon</span>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Education</h2>
+            
+            <div class="education-item fade-in">
+                <div class="edu-header">
+                    <div>
+                        <h3 class="edu-title">Master of Science in Data Analytics</h3>
+                        <p><strong>Lebanese American University (LAU)</strong> - Beirut, Lebanon</p>
+                    </div>
+                    <span class="edu-date">Sep 2024 – May 2026</span>
+                </div>
+                <div class="edu-details">
+                    <span class="gpa">MGPA 4.0</span>
+                </div>
+            </div>
+
+            <div class="education-item fade-in">
+                <div class="edu-header">
+                    <div>
+                        <h3 class="edu-title">Bachelor of Science in Business Studies</h3>
+                        <p><strong>Lebanese American University (LAU)</strong> - Management Emphasis</p>
+                    </div>
+                    <span class="edu-date">Sep 2021 – Apr 2024</span>
+                </div>
+                <div class="edu-details">
+                    <span class="gpa">MGPA 3.98</span>
+                    <span class="gpa">CGPA 3.82</span>
+                    <p style="margin-top: 1rem;"><strong>Achievements:</strong></p>
+                    <ul style="margin-top: 0.5rem; color: #666;">
+                        <li>100% Merit Based Scholarship – USAID</li>
+                        <li>Enrolled in Honors Program – Advanced Track Courses</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Professional Experience</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="job-header">
+                        <h3 class="job-title">Freelance Data Visualization Analyst</h3>
+                        <p class="company">Self-Employed, Beirut, Lebanon</p>
+                        <p class="job-date">May 2025 – Present</p>
+                    </div>
+                    <ul class="achievements">
+                        <li>Collecting, cleaning, and organizing survey datasets to ensure accuracy and reliability</li>
+                        <li>Calculating key descriptive statistics to summarize and interpret data</li>
+                        <li>Creating clear, insightful visualizations and charts to highlight trends and patterns</li>
+                        <li>Delivering analysis reports supporting clients in making data-driven decisions</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="job-header">
+                        <h3 class="job-title">Administrative Graduate Assistant</h3>
+                        <p class="company">LAU – Career & Placement Office, Beirut, Lebanon</p>
+                        <p class="job-date">Sep 2024 – Sep 2025</p>
+                    </div>
+                    <ul class="achievements">
+                        <li>Assisted students with CV reviews, cover letter creation, and LinkedIn profile optimization</li>
+                        <li>Provided career guidance and managed internship vacancy announcements</li>
+                        <li>Researched job market trends and connected students with employers</li>
+                        <li>Developed relationships with NGOs for student placement opportunities</li>
+                        <li>Organized career-focused activities including workshops, competitions, and CV clinics</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="job-header">
+                        <h3 class="job-title">Part-Time Tutor</h3>
+                        <p class="company">YMY Agency, Beirut, Lebanon</p>
+                        <p class="job-date">Mar – Aug 2024</p>
+                    </div>
+                    <ul class="achievements">
+                        <li>Tutored university students in UAE in business-related courses</li>
+                        <li>Achieved improved academic performance and A-grade achievements for students</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="job-header">
+                        <h3 class="job-title">Part-Time Video Advertiser</h3>
+                        <p class="company">Solemate, Aley, Lebanon</p>
+                        <p class="job-date">Oct 2023 – Sep 2024</p>
+                    </div>
+                    <ul class="achievements">
+                        <li>Boosted sales by 15% through development of persuasive video advertising strategies</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="job-header">
+                        <h3 class="job-title">Sales Representative & Stock Agent</h3>
+                        <p class="company">Huboub Al Sanabel, Aley, Lebanon</p>
+                        <p class="job-date">Jun 2023 – Feb 2024</p>
+                    </div>
+                    <ul class="achievements">
+                        <li>Boosted sales by 20% through building strong customer relationships</li>
+                        <li>Optimized inventory management with systematic tracking and monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="job-header">
+                        <h3 class="job-title">Capacity Building Intern</h3>
+                        <p class="company">Chemonics USAID, Sin El Fil, Lebanon</p>
+                        <p class="job-date">Dec 2022 – Mar 2023</p>
+                    </div>
+                    <ul class="achievements">
+                        <li>Created and maintained trackers for vetted individuals</li>
+                        <li>Prepared PowerPoint presentations and managed participant certification processes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills & Expertise</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="skill-title">Data Analytics</h3>
+                    <div class="skill-list">
+                        Data Visualization<br>
+                        Statistical Analysis<br>
+                        Survey Data Processing<br>
+                        Report Generation<br>
+                        SPSS
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="skill-title">Technical Skills</h3>
+                    <div class="skill-list">
+                        MS Office Suite<br>
+                        ChatGPT Prompt Engineering<br>
+                        Canva Design<br>
+                        Database Management<br>
+                        Excel Advanced Functions
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="skill-title">Business & Leadership</h3>
+                    <div class="skill-list">
+                        Team Coordination<br>
+                        Sales Strategy<br>
+                        Customer Relations<br>
+                        Training & Mentorship<br>
+                        Project Management
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="skill-title">Languages</h3>
+                    <div class="skill-list">
+                        <strong>English:</strong> Fluent<br>
+                        <strong>Arabic:</strong> Native
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Certifications & Activities</h2>
+            
+            <h3 style="margin-bottom: 1rem; color: #667eea; font-size: 1.5rem;">Recent Certifications</h3>
+            <div class="cert-grid">
+                <div class="cert-item fade-in">
+                    <div class="cert-title">Certificate of Participation – 42 Piscine</div>
+                    <div class="cert-provider">42 Beirut • Aug 2025</div>
+                </div>
+                <div class="cert-item fade-in">
+                    <div class="cert-title">Body Language: A Beginner's Guide to Nonverbal Cues</div>
+                    <div class="cert-provider">EDUTA • Mar 2025</div>
+                </div>
+                <div class="cert-item fade-in">
+                    <div class="cert-title">Google Sheets: The Comprehensive Masterclass</div>
+                    <div class="cert-provider">Udemy • Oct 2024</div>
+                </div>
+                <div class="cert-item fade-in">
+                    <div class="cert-title">ChatGPT Complete Guide: Learn Midjourney, ChatGPT 4 & More</div>
+                    <div class="cert-provider">Udemy • Sep 2024</div>
+                </div>
+                <div class="cert-item fade-in">
+                    <div class="cert-title">Professional in Human Resources: PHR/SPHR HRCI</div>
+                    <div class="cert-provider">Udemy • Aug 2024</div>
+                </div>
+                <div class="cert-item fade-in">
+                    <div class="cert-title">Human Resource Management Diploma</div>
+                    <div class="cert-provider">Udemy • Jul 2024</div>
+                </div>
+                <div class="cert-item fade-in">
+                    <div class="cert-title">Innovation And Entrepreneurship Competition: 3rd Prize</div>
+                    <div class="cert-provider">LAU • Dec 2023</div>
+                </div>
+                <div class="cert-item fade-in">
+                    <div class="cert-title">Foundations: Data, Data Everywhere</div>
+                    <div class="cert-provider">Google • Oct 2023</div>
+                </div>
+            </div>
+
+            <h3 style="margin: 3rem 0 1rem; color: #667eea; font-size: 1.5rem;">Professional Activities</h3>
+            <div class="cert-grid">
+                <div class="cert-item fade-in">
+                    <div class="cert-title">Brain and Training Hubs Member</div>
+                    <div class="cert-provider">UN Global Compact Network, Lebanon • Feb 2025 – Jun 2025</div>
+                </div>
+                <div class="cert-item fade-in">
+                    <div class="cert-title">Coordinator</div>
+                    <div class="cert-provider">Learning & Experience Education (LEE) Program, LAU • Mar 2025 – Jun 2025</div>
+                </div>
+                <div class="cert-item fade-in">
+                    <div class="cert-title">Business Analyst Intern</div>
+                    <div class="cert-provider">Forage, Accenture • Sep – Oct 2024</div>
+                </div>
+                <div class="cert-item fade-in">
+                    <div class="cert-title">Volunteer</div>
+                    <div class="cert-provider">MMKN, Red Cross, Creativity Center – USAID • Sep 2021 – Jun 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Show/hide navigation on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const navbar = document.getElementById('navbar');
+            
+            if (scrollTop > 100) {
+                if (scrollTop > lastScrollTop) {
+                    navbar.classList.remove('visible');
+                } else {
+                    navbar.classList.add('visible');
+                }
+            } else {
+                navbar.classList.remove('visible');
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+    </script>
+</body>
+</html>
